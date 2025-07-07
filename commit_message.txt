@@ -1,1 +1,1 @@
-initial commit
+Move guideline_text and update path

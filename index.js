@@ -19,8 +19,8 @@ app.use(express.json());
 // ガイドラインファイルを読み込む
 const path = require('path');
 
-const guidelinePart1 = fs.readFileSync(path.join(__dirname, '..', 'guideline_text', 'guideline_part1.txt'), 'utf8');
-const guidelinePart2 = fs.readFileSync(path.join(__dirname, '..', 'guideline_text', 'guideline_part2.txt'), 'utf8');
+const guidelinePart1 = fs.readFileSync(path.join(__dirname, 'guideline_text', 'guideline_part1.txt'), 'utf8');
+const guidelinePart2 = fs.readFileSync(path.join(__dirname, 'guideline_text', 'guideline_part2.txt'), 'utf8');
 
 app.post('/api/chat', async (req, res) => {
   try {
