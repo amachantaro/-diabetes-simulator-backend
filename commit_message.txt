@@ -1,1 +1,1 @@
-Move guideline_text and update path
+Refactor: Strengthen CORS policy
