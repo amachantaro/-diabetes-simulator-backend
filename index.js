@@ -5,7 +5,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs'); // fsモジュールをインポート
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // ★★★ 重要 ★★★
 // この部分は後で環境変数から読み込むように変更します
@@ -17,8 +17,10 @@ app.use(cors());
 app.use(express.json());
 
 // ガイドラインファイルを読み込む
-const guidelinePart1 = fs.readFileSync('C:/Users/reowa/Desktop/WebアプリAI/糖尿病療養指導シミュレーター(患者用）/guideline_text/guideline_part1.txt', 'utf8');
-const guidelinePart2 = fs.readFileSync('C:/Users/reowa/Desktop/WebアプリAI/糖尿病療養指導シミュレーター(患者用）/guideline_text/guideline_part2.txt', 'utf8');
+const path = require('path');
+
+const guidelinePart1 = fs.readFileSync(path.join(__dirname, '..', 'guideline_text', 'guideline_part1.txt'), 'utf8');
+const guidelinePart2 = fs.readFileSync(path.join(__dirname, '..', 'guideline_text', 'guideline_part2.txt'), 'utf8');
 
 app.post('/api/chat', async (req, res) => {
   try {
