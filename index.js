@@ -14,7 +14,7 @@ const API_KEY = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 app.use(cors({
-  origin: 'https://diabetes-simulator-frontend.vercel.app',
+  origin: 'https://diabetes-simulator-frontend-oyc7.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
