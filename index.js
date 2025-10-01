@@ -28,6 +28,7 @@ const guidelinePart2 = fs.readFileSync(path.join(__dirname, 'guideline_text', 'g
 
 app.post('/api/chat', async (req, res) => {
   try {
+    const { message, history, userInfo = {}, theme } = req.body;
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash'});
 
     // ここに、ガイドラインやユーザー情報を使ったプロンプトを作成するロジックを追加します
@@ -71,7 +72,7 @@ ${guidelinePart2}
 
 app.post('/api/evaluate', async (req, res) => {
   try {
-    const { chatHistory, userInfo } = req.body;
+    const { chatHistory, userInfo = {} } = req.body;
 
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash'});
 
@@ -143,7 +144,7 @@ ${JSON.stringify(chatHistory)}
 
 app.post('/api/initial-guidance', async (req, res) => {
   try {
-    const { theme, userInfo } = req.body;
+    const { theme, userInfo = {} } = req.body;
 
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash'});
 
