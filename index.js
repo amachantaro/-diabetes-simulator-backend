@@ -28,9 +28,7 @@ const guidelinePart2 = fs.readFileSync(path.join(__dirname, 'guideline_text', 'g
 
 app.post('/api/chat', async (req, res) => {
   try {
-    const { message, history, userInfo, theme } = req.body;
-
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash'});
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash'});
 
     // ここに、ガイドラインやユーザー情報を使ったプロンプトを作成するロジックを追加します
     const prompt = `あなたは経験豊富な糖尿病療養指導士であり、看護師です。患者の質問に対し、根拠に基づいた、具体的かつ実践的な個別指導を行ってください。糖尿病診療ガイドライン2024の内容を主要な参考情報としつつ、必要に応じて、あなたの持つ正確な医療知識を活用して、より包括的で実践的なアドバイスを提供してください。ただし、情報の正確性を最優先し、ハルシネーション（事実に基づかない情報生成）は絶対に避けてください。
@@ -75,7 +73,7 @@ app.post('/api/evaluate', async (req, res) => {
   try {
     const { chatHistory, userInfo } = req.body;
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash'});
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash'});
 
     const evaluationPrompt = `あなたは経験豊富な糖尿病療養指導士であり、看護師です。以下の患者情報とシミュレーションでの会話履歴を元に、患者（シミュレーションのプレイヤー）の理解度と行動を評価し、今後必要な指導のポイントを具体的かつ分かりやすく表示してください。評価は患者自身に向けたものであり、患者が今後どのように自己管理を進めるべきか、具体的な行動変容を促す内容にしてください。糖尿病診療ガイドライン2024を主要な参考情報としつつ、あなたの持つ正確な医療知識を活用して評価を行ってください。出力はMarkdown形式で、箇条書きなどを活用し、読みやすくしてください。
 
@@ -123,7 +121,7 @@ app.post('/api/summarize', async (req, res) => {
   try {
     const { chatHistory } = req.body;
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash'});
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash'});
 
     const summaryPrompt = `以下の会話履歴を、シミュレーションを行った患者自身が、この会話を通じて何を得たか、何が重要だったかを理解しやすいように、患者向けの言葉で要約してください。会話の主要なトピック、患者の質問、それに対する指導のポイントに焦点を当て、簡潔にまとめてください。
 
@@ -147,7 +145,7 @@ app.post('/api/initial-guidance', async (req, res) => {
   try {
     const { theme, userInfo } = req.body;
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash'});
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash'});
 
     const initialGuidancePrompt = `あなたは経験豊富な糖尿病療養指導士であり、看護師です。以下の患者情報と選択されたテーマに基づき、患者がシミュレーションを始めるにあたって、簡潔で分かりやすい最初の指導メッセージを提供してください。患者が次に何を質問すれば良いか、会話のきっかけとなるような内容にしてください。
 
